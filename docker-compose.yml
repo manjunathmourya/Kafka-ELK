@@ -2,7 +2,7 @@ version: '3.3'
 services:
   zookeeper:
     container_name: zookeeper-cntr
-    image: zookeeper
+    image: confluentinc/cp-zookeeper:7.2.0
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
@@ -11,7 +11,7 @@ services:
 
   kafka:
     container_name: kafka-cntr
-    image: apache/kafka
+    image: confluentinc/cp-kafka:7.2.0
     depends_on:
       - zookeeper
     ports:
@@ -26,8 +26,6 @@ services:
       KAFKA_ADVERTISED_HOST_NAME: localhost
     networks:
       - kafka_elk_nw
-    volumes:
-      - ./logs.txt:/home/appuser/logs.txt
     healthcheck:
       test: nc -vz kafka-cntr 9092 || exit -1
       # start_period: 15s
@@ -37,7 +35,7 @@ services:
   
   elasticsearch:
     container_name: elasticsearch-cntr
-    image: elasticsearch:8.14.3
+    image: elasticsearch:7.9.1
     environment:
       - cluster.name=kafka-cluster
       - bootstrap.memory_lock=true
@@ -72,7 +70,7 @@ services:
       retries: 5
   logstash:
     container_name: logstash-cntr
-    image: logstash:8.14.3
+    image: logstash:7.9.1
     ulimits:
       memlock:
         soft: -1
@@ -100,7 +98,7 @@ services:
       retries: 3
   kibana:
     container_name: kibana-cntr
-    image: kibana:8.14.3
+    image: kibana:7.9.1
     ulimits:
       memlock:
         soft: -1
