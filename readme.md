@@ -4,7 +4,7 @@ List kafka topics from the container
 docker exec -it kafka-cntr bash /bin/kafka-topics --list --bootstrap-server localhost:9092
 
 
-Consume messages from the topic name 'codespotify-topic'
+Consume messages from the topic name 'danske-topic'
 docker exec -it kafka-cntr bash /bin/kafka-console-consumer --topic danske-topic --from-beginning --bootstrap-server localhost:9092
 
 Produce messages via topic name 'codespotify-topic'
