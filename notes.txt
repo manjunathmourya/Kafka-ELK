@@ -1,0 +1,50 @@
+1. To view the indices
+http://localhost:9200/_cat/indices
+
+2. Define Index mapping 
+Use the Elasticsearch API to apply this template.
+curl -X PUT "http://your_elasticsearch_host:9200/_template/logstash-template" -H 'Content-Type: application/json' -d @logstash-template.json
+
+
+{
+  "index_patterns": ["logstash-*"],
+  "settings": {
+    "number_of_shards": 1
+  },
+  "mappings": {
+    "properties": {
+      "@timestamp": { "type": "date" },
+      "devname": { "type": "keyword" },
+      "devid": { "type": "keyword" },
+      "logid": { "type": "keyword" },
+      "type": { "type": "keyword" },
+      "subtype": { "type": "keyword" },
+      "level": { "type": "keyword" },
+      "vd": { "type": "keyword" },
+      "eventtime": { "type": "long" },
+      "srcip": { "type": "ip" },
+      "srcport": { "type": "integer" },
+      "srcintf": { "type": "keyword" },
+      "srcintfrole": { "type": "keyword" },
+      "dstip": { "type": "ip" },
+      "dstport": { "type": "integer" },
+      "dstintf": { "type": "keyword" },
+      "dstintfrole": { "type": "keyword" },
+      "poluuid": { "type": "keyword" },
+      "sessionid": { "type": "long" },
+      "proto": { "type": "integer" },
+      "action": { "type": "keyword" },
+      "policyid": { "type": "integer" },
+      "policytype": { "type": "keyword" },
+      "service": { "type": "keyword" },
+      "dstcountry": { "type": "keyword" },
+      "srccountry": { "type": "keyword" },
+      "trandisp": { "type": "keyword" },
+      "duration": { "type": "integer" },
+      "sentbyte": { "type": "integer" },
+      "rcvdbyte": { "type": "integer" },
+      "sentpkt": { "type": "integer" },
+      "appcat": { "type": "keyword" }
+    }
+  }
+}
