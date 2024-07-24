@@ -4,9 +4,10 @@
 
 2. https://chatgpt.com/c/24a7c138-7b46-4a92-9300-dba0c7321c80 -- logstast filter source
 3. https://chatgpt.com/c/e1e9bb46-98fb-4298-9d38-bd6e3d1058b1 -- python script source
+4. https://github.com/aswinjose89/docker-apps/blob/master/README.md?plain=1 -- docker-compose source
 
 
-4. To ensure that each field has a consistent data type in Elasticsearch, you need to explicitly define a mapping for your Elasticsearch index. This will avoid dynamic mapping and ensure that fields are always indexed with the correct data type. Here is how you can create an index template in Elasticsearch and configure Logstash to use it.
+5. To ensure that each field has a consistent data type in Elasticsearch, you need to explicitly define a mapping for your Elasticsearch index. This will avoid dynamic mapping and ensure that fields are always indexed with the correct data type. Here is how you can create an index template in Elasticsearch and configure Logstash to use it.
 
 
 - Using Kibana Dev Tools:
@@ -62,6 +63,6 @@ PUT _index_template/your_index_template_name
   }
 }
 
-5. To ensure that the index template was created successfully, you can check its details using the following in Kibana Dev Tools:
+6. To ensure that the index template was created successfully, you can check its details using the following in Kibana Dev Tools:
 
          GET /_index_template/danske_template
