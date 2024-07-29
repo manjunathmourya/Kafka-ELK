@@ -1,4 +1,5 @@
 from confluent_kafka import Producer
+#time is used to add delays between sending messages to simulate real-time data streaming.
 import time
 
 # Kafka configuration
@@ -25,7 +26,7 @@ def send_file_to_kafka(file_path, topic_name):
             # Optional: Sleep to simulate real-time data streaming
             time.sleep(0.1)
             # Poll to handle delivery reports (callbacks)
-            producer.poll(0)
+           # producer.poll(0)
     producer.flush()
     print("Finished sending file to Kafka")
 
